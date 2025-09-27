@@ -1,0 +1,26 @@
+Template
+=========
+apex.server.process(
+    "YOUR_ON_DEMAND_PROCESS_NAME", // Name of your On-Demand process
+    {
+        x01: "value_to_pass" // Optional: pass item values to the PL/SQL process
+    },
+    {
+        success: function(pData) {
+            $("#YOUR_REGION_STATIC_ID").html(pData); // Update the region with the returned HTML
+        },
+        dataType: "text" 
+    }
+);
+
+example
+=========
+apex.server.process ('summary', {x01:apex.item("P44_REF_ID").getValue(), x02:apex.item("P44_TYPE").getValue()
+                              },
+{
+success:function(pData) {
+document.getElementById('summary').innerHTML = pData ;
+},
+dataType: "text" 
+}
+);
