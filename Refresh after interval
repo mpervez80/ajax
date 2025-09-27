@@ -1,0 +1,29 @@
+setInterval(function() {
+    apex.server.process(
+        "YOUR_ON_DEMAND_PROCESS_NAME",
+        {
+            x01: "value_to_pass"
+        },
+        {
+            success: function(pData) {
+                $("#YOUR_REGION_STATIC_ID").html(pData);
+            }
+        }
+    );
+}, 5000); // Refresh every 5 seconds (5000 milliseconds)
+
+
+setInterval(function() {
+    apex.server.process(
+        "summary",
+        {
+            x02: apex.item("P44_TYPE").getValue()
+        },
+        {
+            success: function(pData) {
+                document.getElementById('summary').innerHTML = pData ;
+            },
+            dataType: "text" 
+        }
+    );
+}, 5000); 
